@@ -1,0 +1,265 @@
+/* شبكة الكروت */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  padding: 24px 0;
+  align-items: stretch;
+}
+
+/* شكل كارت المنتج المودرن */
+.product-card-item {
+  background-color: #121824;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.product-card-item:hover {
+  border-color: #334155;
+  transform: translateY(-4px);
+}
+
+/* حاوية الصورة وتكبيرها بنعومة بروفيشنال */
+.product-image-container {
+  position: relative;
+  height: 220px;
+  width: 100%;
+  overflow: hidden;
+  background-color: #0f172a;
+}
+
+.product-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* حركة ناعمة وبطيئة للمودرن لوك */
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.product-card-item:hover .product-image-container img {
+  transform: scale(1.08);
+}
+
+/* شارة المخزون */
+.product-stock-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+.stock-in { background-color: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+.stock-out { background-color: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+/* الأسهم تظهر عند الهوفر على الكارت */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease, background-color 0.2s;
+  z-index: 5;
+}
+
+.product-card-item:hover .slider-arrow {
+  opacity: 1;
+}
+
+.slider-arrow.left { left: 10px; }
+.slider-arrow.right { right: 10px; }
+
+/* محتوى الكارت */
+.product-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-category-brand {
+  font-size: 10px;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.8px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.product-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f8fafc;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-description {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 34px;
+}
+
+/* تنسيق السعر والخصم */
+.product-pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.product-price {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.product-discount {
+  font-size: 12px;
+  font-weight: 500;
+  color: #34d399;
+}
+
+/* مربعات الـ Tags الـ 4 */
+.product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+  max-height: 50px;
+  overflow: hidden;
+}
+
+.product-tag {
+  background-color: #1e293b;
+  color: #cbd5e1;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* أزرار الإجراءات التحتية (بدون وميض مزعج وبألوان شيك) */
+.product-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.product-action-btn {
+  background-color: #1e293b;
+  color: #cbd5e1;
+  border: 1px solid #334155;
+  padding: 8px 4px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+/* لون أزرق هادئ للـ View */
+.btn-view:hover {
+  background-color: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+/* لون أصفر/ذهبي هادئ للـ Edit */
+.btn-edit:hover {
+  background-color: rgba(250, 204, 21, 0.15);
+  color: #facc15;
+  border-color: rgba(250, 204, 21, 0.4);
+}
+
+/* لون بنفسجي هادئ للـ Quick Edit */
+.btn-quick:hover {
+  background-color: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+/* زر الحذف بالأسفل */
+.product-delete-btn {
+  grid-column: span 3;
+  margin-top: 4px;
+  background-color: rgba(239, 68, 68, 0.08);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.product-delete-btn:hover {
+  background-color: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+
+/* جعل العنوان عريض وبارز (Bold) */
+.product-title {
+  font-size: 16px;
+  font-weight: 700; /* خط عريض وتخين زي الصورة */
+  color: #ffffff;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* تنسيق السعر والخصم بجانبه */
+.product-pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.product-price {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.product-discount {
+  font-size: 12px;
+  font-weight: 600;
+  color: #34d399; /* لون أخضر هادئ للخصم */
+  background-color: rgba(52, 211, 153, 0.1);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
